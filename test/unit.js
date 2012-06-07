@@ -37,9 +37,6 @@ describe("Templar-hogan", function () {
 
             routilHoganize(routil, uri)
 
-            // WHY ARE YOU TRUE
-            console.log(loadFolder.calledTwice)
-
             assert(loadFolder.calledOnce, "loadFolder was not called")
             assert(loadFolder.calledWith(uri), 
                 "loadFolder was not called correctly")

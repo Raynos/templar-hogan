@@ -27,6 +27,4 @@ function routilHoganize(routil, uri) {
     routil.config({
         templar: hoganize(routil.Templar, uri)
     })
-
-    routil.Templar.loadFolder(uri)
 }
