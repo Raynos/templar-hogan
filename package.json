@@ -1,0 +1,40 @@
+{
+  "name": "templar-hogan",
+  "version": "0.0.1",
+  "description": "hogan.js support for templar",
+  "keywords": [],
+  "author": "Raynos <raynos2@gmail.com>",
+  "repository": "git://github.com/Raynos/templar-hogan.git",
+  "main": "index",
+  "scripts": {
+    "test": "make test"
+  },
+  "homepage": "https://github.com/Raynos/templar-hogan",
+  "contributors": [
+    {
+      "name": "Jake Verbaten"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Raynos/templar-hogan/issues",
+    "email": "raynos2@gmail.com"
+  },
+  "dependencies": {
+    "hogan.js": "~2.0.0"
+  },
+  "devDependencies": {
+    "templar": "0.0.6",
+    "mocha": "1.1.0",
+    "routil": "0.0.13",
+    "sinon": "git://github.com/cjohansen/Sinon.JS.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/raynos/templar-hogan/raw/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">=0.4"
+  }
+}
