@@ -8,6 +8,7 @@ Hogan.js support for templar and routil
     var hoganize = require("templar-hogan"),
         Templar = require("templar"),
         path = require("path"),
+        // hoganize will call templar.loadFolder for you
         templarOptions = hoganize(templar, path.join(__dirname, "..", "template"))
 
     http.createServer(function (req, res) {
@@ -25,6 +26,7 @@ Hogan.js support for templar and routil
         hoganize = require("templar-hogan").routil,
         path = require("path")
 
+    // also calls templar.loadFolder
     hoganize(routil, path.join(__dirname, "..", "templates")
 
     http.createServer(function (req, res) {
