@@ -18,7 +18,7 @@ describe("Templar-hogan", function () {
 
         it("should return engine and folder", function () {
             assert.equal(options.folder, uri, "options.folder is wrong")
-            assert(options.engine.compile, 
+            assert.equal(typeof options.engine.compile, "function",
                 "engine does not have a compile function")
         })
     })
@@ -33,8 +33,8 @@ describe("Templar-hogan", function () {
         it("should invoke Templar.loadFolder", loadFolderOnce)
 
         it("should invoke routil.config", function () {
-            assert(routil.config.calledOnce, "routil.config was not called")
-            assert(routil.config.calledWith({
+            assert.ok(routil.config.calledOnce, "routil.config was not called")
+            assert.ok(routil.config.calledWith({
                 templar: {
                     folder: uri,
                     engine: {
@@ -46,8 +46,8 @@ describe("Templar-hogan", function () {
     })
 
     function loadFolderOnce() {
-        assert(templar.loadFolder.calledOnce, "loadFolder was not called")
-        assert(templar.loadFolder.calledWith(uri), 
+        assert.ok(templar.loadFolder.calledOnce, "loadFolder was not called")
+        assert.ok(templar.loadFolder.calledWith(uri), 
             "loadFolder was not called correctly")
     }
 
