@@ -25,6 +25,7 @@
   "devDependencies": {
     "templar": "0.0.6",
     "mocha": "1.1.0",
+    "request": "~2.9.202",
     "routil": "0.0.13",
     "sinon": "git://github.com/cjohansen/Sinon.JS.git"
   },

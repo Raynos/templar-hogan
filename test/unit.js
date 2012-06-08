@@ -4,49 +4,61 @@ var hoganize = require("../index"),
     assert = require("assert")
 
 describe("Templar-hogan", function () {
-    describe("hoganize", function () {
-        it("should call loadFolder", function () {
-            var templar = createTemplar(),
-                loadFolder = templar.loadFolder,
-                uri = {}
+    var routil, templar, options,
+        uri = {}
 
-            hoganize(templar, uri)
+    describe("calling hoganize", function () {
+        before(function () {
+            setup()
 
-            assert(loadFolder.calledOnce, "loadFolder was not called")
-            assert(loadFolder.calledWith(uri), 
-                "loadFolder was not called correctly")
+            options = hoganize(templar, uri)
         })
 
+        it("should call loadFolder", loadFolderOnce)
+
         it("should return engine and folder", function () {
-            var templar = createTemplar(),
-                uri = {}
-
-            var options = hoganize(templar, uri)
-
             assert.equal(options.folder, uri, "options.folder is wrong")
             assert(options.engine.compile, 
                 "engine does not have a compile function")
         })
     })
 
-    describe("routilHoganize", function () {
-        it("should invoke Templar.loadFolder", function () {
-            var routil = createRoutil(),
-                loadFolder = routil.Templar.loadFolder,
-                uri = {}
+    describe("calling routilHoganize", function () {
+        before(function () {
+            setup()
 
             routilHoganize(routil, uri)
+        })
 
-            assert(loadFolder.calledOnce, "loadFolder was not called")
-            assert(loadFolder.calledWith(uri), 
-                "loadFolder was not called correctly")
+        it("should invoke Templar.loadFolder", loadFolderOnce)
+
+        it("should invoke routil.config", function () {
+            assert(routil.config.calledOnce, "routil.config was not called")
+            assert(routil.config.calledWith({
+                templar: {
+                    folder: uri,
+                    engine: {
+                        compile: sinon.match.func
+                    }
+                }
+            }), "routil.config was not called correctly")
         })
     })
+
+    function loadFolderOnce() {
+        assert(templar.loadFolder.calledOnce, "loadFolder was not called")
+        assert(templar.loadFolder.calledWith(uri), 
+            "loadFolder was not called correctly")
+    }
+
+    function setup() {
+        templar = createTemplar()
+        routil = createRoutil(templar)
+    }
 })
 
-function createRoutil() {
-    var config = sinon.spy(),
-        templar = createTemplar()
+function createRoutil(templar) {
+    var config = sinon.spy()
 
     return {
         config: config,
